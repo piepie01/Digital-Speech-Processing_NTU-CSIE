@@ -1,16 +1,12 @@
 # DSP hw1
 
-<h1 align = "right"><font size = "1">學號：b05902031, 系級：資工三, 姓名：謝議霆</font></h1>
-
 ## Environment
 
 * Linux 4.17.11-arch1(CSIE Work station)
-* with std = c++98
 
 ## Execution
 
 ```bash
-// In hw1_b05902031/
 make
 ./train [iteration] [model_init.txt] [seq_model_0x.txt] model_0x.txt
 ./test [modellist.txt] [testing_data1.txt] result1.txt
