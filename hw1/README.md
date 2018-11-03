@@ -19,7 +19,7 @@ make
 * For each sequence, we can calculate a new **initial, transition, and observation** value.
 * For computing with single sequence, first, we need to run a forward algorithm, which can calculate an ```alpha[50][6]``` array, the sum of probability of every path to a target state with the observation. And a backward algorithm, which can calculate an ```beta[50][6]``` array, the sum of probability of every path from a target state to the end with the observation.
 * Then, we want to compute the probability of a state in target time. we can just element wise multiply ```alpha``` and ```beta``` and normalize each row and get ```gamma[50][6]```.
-* Last, we need to compute the probability of all the edge from time $t$ to $t+1$ and from state $i$ to $j$. Thus, the probability an edge from $t$ to $t+1$ and from state $i$ to $j$ will be $alpha[t][i] \times transition[i][j] \times observation[j][time\ t+1\ in\ sequence] \times beta[t+1][j]$. After normalizing for each time, we got ```epsilon[50][6][6]```.
+* Last, we need to compute the probability of all the edge from time ```t``` to ```t+1``` and from state ```i``` to ```j```. Thus, the probability an edge from ```t``` to ```t+1``` and from state ```i``` to ```j``` will be ```alpha[t][i] * transition[i][j] * observation[j][time t+1 in sequence] * beta[t+1][j]```. After normalizing for each time, we got ```epsilon[50][6][6]```.
 * After all the calculation above, we can determine a new model with
   * Initial : ```gamma[0]```
   * Transitoin : ```Transition[i][j] = sum(state i to state j in every time) / sum(prob of state i in every time) = sum(epsilon[0:50][i][j])/sum(gamma[0:50][i])```
